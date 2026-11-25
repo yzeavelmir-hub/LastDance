@@ -1,22 +1,114 @@
-body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
+
+*
+:root {
+  --violet-nuit: #1e0b3a;
+  --violet: #5b21b6;
+  --violet-clair: #a78bfa;
+  --jaune: #facc15;
+  --creme: #fff9e6;
 }
 
-header,
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Poppins", system-ui, sans-serif;
+  background: var(--violet-nuit);
+  color: var(--creme);
+}
+
+header {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  background: linear-gradient(160deg, var(--violet) 0%, var(--violet-nuit) 100%);
+  border-bottom: 6px solid var(--jaune);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 9vw, 5rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--jaune);
+}
+
+.slogan {
+  margin: 0.5rem 0 0;
+  color: var(--violet-clair);
+  font-size: 1.1rem;
+}
+
 main {
   max-width: 70rem;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem 1rem 4rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--jaune);
 }
 
 #programme {
   list-style: none;
+  margin: 0;
   padding: 0;
   display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
   gap: 1rem;
 }
 
 .carte {
-
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  background: var(--violet);
+  border-radius: 12px;
+  border-left: 8px solid var(--violet-clair);
+  transition: transform 0.2s;
 }
+
+.carte:hover { transform: translateY(-4px); }
+
+.carte h3 { margin: 0.25rem 0; font-size: 1.3rem; }
+
+.carte p { margin: 0; }
+
+.jour {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--violet-clair);
+}
+
+.type {
+  align-self: flex-start;
+  margin: 0.25rem 0 0.75rem !important;
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  background: var(--jaune);
+  color: var(--violet-nuit);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.carte[data-type="Musique"] .type {
+  background: var(--violet-clair);
+}
+
+.description {
+  line-height: 1.5;
+  margin-bottom: 1rem !important;
+}
+
+.pied {
+  margin-top: auto;
+  font-weight: 700;
+  color: var(--jaune);
+}
+
+/* ---------- Le JS pose data-jour, le CSS le lit ---------- */
+.carte[data-jour="vendredi"] { border-left-color: var(--violet-clair); }
+.carte[data-jour="samedi"]   { border-left-color: var(--jaune); }
+.carte[data-jour="dimanche"] { border-left-color: var(--creme); }
